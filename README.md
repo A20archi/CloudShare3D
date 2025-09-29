@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+---
+
+# CloudShare3D
+
+**CloudShare3D** is a modern web application for uploading, sharing, and managing videos and images in a 3D-enhanced dashboard. Built with **Next.js**, **React Three Fiber**, **Cloudinary**, **Prisma**, **NeonDB**, and **Clerk**, it offers an interactive media experience with real-time previews, 3D visuals, and secure authentication.
+
+---
+
+## Features
+
+* **User Authentication**: Seamless login/signup powered by [Clerk](https://clerk.com) for secure user management.
+* **3D Dashboard**: Stunning 3D torus ring with stardust background using `@react-three/fiber` and `@react-three/drei`.
+* **Video Uploads**: Direct-to-Cloudinary video uploads with real-time progress tracking.
+* **Image Uploads**: Upload images via Cloudinary and instantly preview them.
+* **Media Grid**: Unified media grid displaying both videos and images with download functionality.
+* **Responsive UI**: Mobile-friendly interface with smooth animations using TailwindCSS and Framer Motion.
+* **File Metadata**: Tracks video duration, original and compressed size, and upload timestamps.
+* **Safe Cloud Storage**: Media is securely stored in Cloudinary, ensuring scalable hosting.
+
+---
+
+## Tech Stack
+
+* **Frontend**: Next.js 13, React, TailwindCSS, Framer Motion
+* **3D Visualization**: React Three Fiber, Drei
+* **Backend**: Next.js API Routes, Prisma ORM
+* **Database**: NeonDB (PostgreSQL) via Prisma
+* **Authentication**: Clerk
+* **Cloud Storage**: Cloudinary (images and videos)
+
+---
+
+## Installation
+
+1. Clone the repo:
+
+```bash
+git clone https://github.com/A20archi/CloudShare3D.git
+cd CloudShare3D
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Create a `.env` file in the root with the following variables:
+
+```env
+DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+CLERK_FRONTEND_API=your_clerk_frontend_api
+CLERK_API_KEY=your_clerk_api_key
+```
+
+4. Run database migrations:
+
+```bash
+npx prisma migrate dev
+```
+
+5. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* Visit `/` to access the home page with the **3D dashboard** and media grid.
+* Upload videos at `/video-upload` or images at `/social-share`.
+* Preview videos in real-time and download media directly from the grid.
+* User authentication ensures each user can manage their own media.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Folder Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+/app
+  /home
+    page.tsx         # Home page with media grid & dashboard
+  /video-upload
+    page.tsx         # Video upload page with 3D canvas
+  /social-share
+    page.tsx         # Image upload page
+/componenets
+  VideoCard.tsx
+  ImageCard.tsx
+  Dashboard.tsx
+/api
+  /video-upload
+  /image-upload
+  /video-signature
+/prisma
+  schema.prisma
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is **open source** under the [MIT License](LICENSE).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+
